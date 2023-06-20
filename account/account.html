@@ -1,0 +1,59 @@
+<script type="text/javascript">
+
+    RED.nodes.registerType("account", {
+        category: "config",
+        defaults: {
+            name: { value: "" },
+            accountIdType: { value: "email" }
+        },
+        credentials: {
+            accountId: {
+                value: "",
+                type: "text",
+                require: true
+            },
+            password: {
+                value: "",
+                type: "password",
+                require: true
+            }
+        },
+        label: function () {
+            return this.name || "account";
+        },
+        oneditprepare: function () {
+            $("#node-config-input-accountId").typedInput({
+                type: "email",
+                types: [
+                    {
+                        value: "email",
+                        label: "E-mail "
+                    },
+                    {
+                        value: "phoneNumber",
+                        label: "Phone Number "
+                    }
+                ],
+                typeField: "#node-config-input-accountIdType"
+            });
+        }
+        );
+
+</script>
+
+<script type="text/html" data-template-name="account">
+    <div class="form-row">
+        <label for="node-config-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-config-input-name">
+    </div>
+    <hr>
+    <div class="form-row">
+        <label for="node-config-input-accountId"><i class="fa fa-user"></i> Account</label>
+        <input type="text" id="node-config-input-accountId" style="width:68%">
+        <input type="hidden" id="node-config-input-accountIdType">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-password"><i class="fa fa-key"></i> Password</label>
+        <input type="password" id="node-config-input-password">
+    </div>
+</script>

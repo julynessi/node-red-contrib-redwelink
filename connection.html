@@ -1,0 +1,46 @@
+<script type="text/javascript">
+    RED.nodes.registerType("connection", {
+        icon: "font-awesome/fa-solid fa-gear",
+        category: "config",
+        defaults: {
+            name: { value: "" },
+            useridType:{value: "email"}
+        },
+        credentials:{
+            userid:{value:"", type:"text",  required:true},
+
+            password: {value:"" ,type:"password" }
+        },
+        label: function () {
+            if (this.name && this.name.length) return this.name;
+            if (this.email && this.email.length) return this.email;
+            return "connection";
+        },
+        oneditprepare: function () {
+        $("#node-config-input-userid").typedInput({
+            type:"email",
+            types:[{value:"email", label:"E-mail "}, {value:"phoneNumber", label:"Phone Number "}],
+            typeField: "#node-config-input-useridType"
+        });
+    }
+    });
+
+</script>
+
+
+<script type="text/html" data-template-name="connection">
+    <div class="form-row">
+        <label for="node-config-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-config-input-name">
+    </div>
+    <hr>
+    <div class="form-row">
+        <label for="node-config-input-userid"><i class="fa fa-user"></i> User</label>
+        <input type="hidden" id="node-config-input-useridType">
+        <input type="text" id="node-config-input-userid">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-password"><i class="fa fa-key"></i> Password</label>
+        <input type="password" id="node-config-input-password">
+    </div>
+</script>

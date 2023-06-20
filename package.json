@@ -1,8 +1,7 @@
 {
-  "name": "red-contrib-redwelink",
-  "version": "1.0.0",
+  "name": "@julynessi/red-contrib-redwelink",
+  "version": "0.0.1",
   "description": "Node-RED eWelink API nodes. For control eWelink, Sonoff and the other eWelink supported devices",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,6 +9,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "ewelink-api": "^3.1.1"
+    "ewelink-api": "^3.1.1",
+    "uuid": "^9.0.0"
+  },
+  "node-red": {
+    "nodes": {
+      "connection": "connection.js",
+      "devices": "devices.js",
+      "eventin": "eventin.js"
+    }
   }
 }
